@@ -1,10 +1,5 @@
 function App() {
-
-  return (
-    <div>
-      test
-    </div>
-  )
+  return <div className="underline text-3xl">test</div>;
 }
 
-export default App
+export default App;
