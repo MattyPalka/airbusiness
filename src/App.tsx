@@ -1,5 +1,14 @@
+import { mockApiResponse } from "./api-service/mock-business";
+import { Tile } from "./components/tile";
+
 function App() {
-  return <div className="underline text-3xl">test</div>;
+  return (
+    <div className="grid grid-cols-12 p-4 gap-4">
+      {mockApiResponse.map((business) => (
+        <Tile businessDetails={business} />
+      ))}
+    </div>
+  );
 }
 
 export default App;
