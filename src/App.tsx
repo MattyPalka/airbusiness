@@ -1,5 +1,4 @@
 import { mockApiResponse } from "./api-service/mock-business";
-import { Icon } from "./components/icon";
 import { Tile } from "./components/tile";
 
 function App() {
