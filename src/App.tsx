@@ -1,4 +1,5 @@
 import { mockApiResponse } from "./api-service/mock-business";
+import { Icon } from "./components/icon";
 import { Tile } from "./components/tile";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       {mockApiResponse.map((business) => (
         <Tile businessDetails={business} key={business.id} />
       ))}
+      <Icon icon="Heart" />
     </div>
   );
 }
