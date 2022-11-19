@@ -52,7 +52,7 @@ export const mockApiResponse: BusinessDetails[] = [
     info: ["kup tu", "nie tam"],
   },
   {
-    id: 5,
+    id: 6,
     rating: "5.4",
     imageSrc: "https://placeimg.com/640/480/any",
     name: "Lidl",
