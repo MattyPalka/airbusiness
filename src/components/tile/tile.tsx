@@ -8,7 +8,8 @@ interface Props {
 }
 
 export const Tile = ({ businessDetails }: Props) => {
-  const { imageSrc, name, rating, info, price } = businessDetails;
+  const { image_url, name, rating, price, categories, location } =
+    businessDetails;
   const [isFavorite, setIsFavorite] = useState(false);
   return (
     <div className="grid grid-rows-[repeat(2,_auto)] gap-2 col-span-3 cursor-pointer">
@@ -25,24 +26,32 @@ export const Tile = ({ businessDetails }: Props) => {
           />
         </button>
         <img
-          src={imageSrc}
+          src={image_url}
           alt={`${name} image`}
           className="w-full h-full object-center object-cover rounded-md"
         />
       </div>
       <div className="flex flex-col">
         <header className="flex justify-between items-center">
-          <h6 className="font-semibold">{name}</h6>
+          <div className="flex gap-2 items-center">
+            <h6 className="font-semibold">{name}</h6>
+            <InfoText>{price}</InfoText>
+          </div>
           <div className="flex gap-1 items-center">
             <Icon icon="StarSolid" className="w-3" />
             <span className="text-sm">{rating}</span>
           </div>
         </header>
-        {info.map((item, i) => (
-          <InfoText key={i}>{item}</InfoText>
-        ))}
         <InfoText>
-          {price.value} {price.currency}
+          {categories.map((category, i) => (
+            <span key={category.alias}>
+              {category.title}
+              {i + 1 < categories.length && ", "}
+            </span>
+          ))}
+        </InfoText>
+        <InfoText>
+          {location.address1}, <strong>{location.city}</strong>
         </InfoText>
       </div>
     </div>
