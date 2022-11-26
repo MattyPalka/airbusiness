@@ -1,4 +1,4 @@
-export interface BusinessDetails {
+export interface Business {
   rating: number;
   price: string;
   phone: string;
@@ -36,7 +36,7 @@ export interface Location {
   zip_code: string;
 }
 
-export const mockApiResponse: BusinessDetails[] = [
+export const mockApiResponse: Business[] = [
   {
     rating: 4,
     price: "$",

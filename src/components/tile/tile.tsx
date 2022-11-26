@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { BusinessDetails } from "../../api-service/mock-business";
+import { Business } from "../../api-service/mock-business";
 import { Icon } from "../icon";
 import { InfoText } from "../info-text";
 
 interface Props {
-  businessDetails: BusinessDetails;
+  businessDetails: Business;
 }
 
 export const Tile = ({ businessDetails }: Props) => {
