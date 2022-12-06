@@ -1,19 +1,7 @@
 import { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
+import { CategoryType } from "../../../../api-service/useSearchBusinesses";
 import { Icon, IconName } from "../../../icon";
-
-export const categories = [
-  "auto",
-  "homeservices",
-  "education",
-  "restaurants",
-  "active",
-  "beautysvc",
-  "health",
-  "pets",
-] as const;
-
-export type CategoryType = typeof categories[number];
 
 interface Props {
   categoryType: CategoryType;

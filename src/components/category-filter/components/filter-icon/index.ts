@@ -1,2 +1,1 @@
-export { FilterIcon, categories } from "./filter-icon";
-export type { CategoryType } from "./filter-icon";
+export { FilterIcon } from "./filter-icon";

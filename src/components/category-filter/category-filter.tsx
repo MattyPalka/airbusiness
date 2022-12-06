@@ -1,4 +1,5 @@
-import { categories, FilterIcon } from "./components/filter-icon";
+import { categories } from "../../api-service/useSearchBusinesses";
+import { FilterIcon } from "./components/filter-icon";
 
 export const CategoryFilter = () => {
   return (

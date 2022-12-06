@@ -4,41 +4,47 @@ import { CategoryFilter } from "./components/category-filter";
 import { Tile } from "./components/tile";
 import { YELP_API_KEY } from "./yelp-api-key";
 
-function App() {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      "Access-Control-Allow-Origin": "*",
-      Authorization: `Bearer ${YELP_API_KEY}`,
-    },
-  };
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+import { getData } from "./api-service/get-data";
+import { useSearchBusinesses } from "./api-service/useSearchBusinesses";
 
+const queryClient = new QueryClient();
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Main />
+    </QueryClientProvider>
+  );
+}
+
+const Main = () => {
   const [businesses, setBusinesses] = useState<Business[]>([]);
 
+  const { isLoading, error, data } = useSearchBusinesses();
+
   useEffect(() => {
-    fetch(
-      "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Poland&sort_by=best_match&limit=20",
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        setBusinesses(response.businesses);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    data && setBusinesses(data.businesses);
+  }, [data]);
 
   return (
     <>
       <CategoryFilter />
       <div className="grid grid-cols-12 p-4 gap-4">
-        {businesses.map((business) => (
-          <Tile businessDetails={business} key={business.id} />
-        ))}
+        <>
+          {isLoading && "Loading"}
+          {error && "error"}
+          {businesses.map((business) => (
+            <Tile businessDetails={business} key={business.id} />
+          ))}
+        </>
       </div>
     </>
   );
-}
+};
 
 export default App;
