@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
-import { Business, mockApiResponse } from "./api-service/mock-business";
+import { Business } from "./api-service/mock-business";
 import { CategoryFilter } from "./components/category-filter";
 import { Tile } from "./components/tile";
-import { YELP_API_KEY } from "./yelp-api-key";
 
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
-import { getData } from "./api-service/get-data";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useSearchBusinesses } from "./api-service/useSearchBusinesses";
 
 const queryClient = new QueryClient();
