@@ -2,6 +2,7 @@ import { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { CategoryType } from "../../../../api-service/useSearchBusinesses";
 import { Icon, IconName } from "../../../icon";
+import { useSearchParams } from "react-router-dom";
 
 interface Props {
   categoryType: CategoryType;
@@ -20,9 +21,10 @@ const categoryToIconMap: Record<CategoryType, IconName> = {
 
 export const FilterIcon = ({ categoryType }: Props) => {
   const { t } = useTranslation("filter-names");
+  const [_, setSearchParams] = useSearchParams();
 
   const handleOnClick = (event: MouseEvent<HTMLButtonElement>) => {
-    console.log(categoryType);
+    setSearchParams({ category: categoryType });
   };
 
   return (

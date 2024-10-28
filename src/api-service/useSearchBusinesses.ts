@@ -14,7 +14,7 @@ export const categories = [
   "pets",
 ] as const;
 
-export type CategoryType = typeof categories[number];
+export type CategoryType = (typeof categories)[number];
 
 interface SearchParams {
   location?: string;
@@ -26,7 +26,7 @@ interface SearchParams {
   sort_by?: "best_match" | "rating" | "review_count" | "distance";
   limit?: number;
   offset?: number;
-  categories?: CategoryType;
+  categories?: CategoryType | undefined;
 }
 
 export const useSearchBusinesses = (searchParams?: SearchParams) => {

@@ -16,7 +16,7 @@ export const Home = () => {
   return (
     <>
       <CategoryFilter />
-      <div className="grid grid-cols-12 p-4 gap-4">
+      <div className="grid grid-cols-12 gap-4">
         <>
           {isLoading && "Loading"}
           {error && "error"}

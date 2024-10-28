@@ -6,14 +6,15 @@ import "./i18n";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Business } from "./pages/Business";
 import { Home } from "./pages/Home";
+import { ROUTES } from "./constants/routes";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: ROUTES.HOME.href,
     element: <App />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/business/:id", element: <Business /> },
+      { path: ROUTES.HOME.href, element: <Home /> },
+      { path: ROUTES.BUSINESS.href, element: <Business /> },
     ],
   },
 ]);

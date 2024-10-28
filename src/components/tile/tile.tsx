@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Business } from "../../api-service/mock-business";
 import { Icon } from "../icon";
 import { InfoText } from "../info-text";
-import { Link } from "react-router-dom";
+import { generatePath, Link } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 
 interface Props {
   businessDetails: Business;
@@ -14,7 +15,9 @@ export const Tile = ({ businessDetails }: Props) => {
   const [isFavorite, setIsFavorite] = useState(false);
   return (
     <Link
-      to={`business/${id}`}
+      to={generatePath(ROUTES.BUSINESS.href, {
+        id,
+      })}
       className="grid grid-rows-[repeat(2,_auto)] gap-2 col-span-3 cursor-pointer"
     >
       <div className="aspect-square relative">

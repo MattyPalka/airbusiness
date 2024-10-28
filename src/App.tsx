@@ -14,10 +14,10 @@ function App() {
 
 const Root = () => {
   return (
-    <>
+    <div className="p-4">
       <Navbar />
       <Outlet />
-    </>
+    </div>
   );
 };
 

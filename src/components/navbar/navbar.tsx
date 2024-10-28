@@ -1,16 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Icon } from "../icon";
 
 export const Navbar = () => {
-  const navigate = useNavigate();
   return (
-    <div>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Home
-      </button>
+    <div className="flex gap-4">
+      <Link to="/" className="flex gap-1 hover:underline">
+        <Icon icon="Wind" />
+        AirBusiness
+      </Link>
     </div>
   );
 };
