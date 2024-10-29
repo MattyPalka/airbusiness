@@ -4,10 +4,10 @@ import { useBusinessDetails } from "../api-service/useBusinessDetails";
 export const Business = () => {
   const { id } = useParams();
 
-  const { isLoading, error, data: business } = useBusinessDetails(id);
+  const { isLoading, error, isError, data: business } = useBusinessDetails(id);
   return (
     <div>
-      {!!error && "error"}
+      {isError && error.message}
       {isLoading ? (
         "Loading"
       ) : (

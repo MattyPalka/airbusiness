@@ -14,5 +14,14 @@ export const getData = <T>(
 ): Promise<T> => {
   const searchParams = new URLSearchParams(params);
   const url = `${CORS_PROXY_URL}${path}?${searchParams.toString()}`;
-  return fetch(url, options).then((res) => res.json());
+  return fetch(url, options)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`${res.status} - ${res.statusText}`);
+      }
+      return res.json();
+    })
+    .catch((err) => {
+      throw err;
+    });
 };
