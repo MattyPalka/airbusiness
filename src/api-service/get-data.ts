@@ -8,7 +8,10 @@ const options = {
 
 const CORS_PROXY_URL = "http://localhost:4000/yelp";
 
-export const getData = (path: string, params?: Record<string, string>) => {
+export const getData = <T>(
+  path: string,
+  params?: Record<string, string>
+): Promise<T> => {
   const searchParams = new URLSearchParams(params);
   const url = `${CORS_PROXY_URL}${path}?${searchParams.toString()}`;
   return fetch(url, options).then((res) => res.json());

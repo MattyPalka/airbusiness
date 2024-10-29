@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { parseMinMax } from "../helpers/parse-min-max";
 import { removeEmptyFromObject } from "../helpers/remove-empty-from-object";
 import { getData } from "./get-data";
+import { Business } from "./mock-business";
 
 export const categories = [
   "auto",
@@ -65,9 +66,10 @@ export const useSearchBusinesses = (searchParams?: SearchParams) => {
   return useQuery({
     queryKey: ["businessesData", ...Object.values(normalizedSearchParams)],
     queryFn: () =>
-      getData(
-        "/businesses/search",
-        removeEmptyFromObject(normalizedSearchParams)
-      ),
+      getData<{
+        businesses: Business[];
+        region: { center: { latitude: number; longitude: number } };
+        total: number;
+      }>("/businesses/search", removeEmptyFromObject(normalizedSearchParams)),
   });
 };
