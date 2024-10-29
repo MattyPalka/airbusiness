@@ -14,6 +14,9 @@ export const categories = [
   "pets",
 ] as const;
 
+export const isCategory = (value: string | null): value is CategoryType =>
+  !!(value && categories.includes(value as CategoryType));
+
 export type CategoryType = (typeof categories)[number];
 
 interface SearchParams {
@@ -60,7 +63,7 @@ export const useSearchBusinesses = (searchParams?: SearchParams) => {
   };
 
   return useQuery({
-    queryKey: ["businessesData"],
+    queryKey: ["businessesData", ...Object.values(normalizedSearchParams)],
     queryFn: () =>
       getData(
         "/businesses/search",

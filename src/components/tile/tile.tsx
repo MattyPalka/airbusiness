@@ -13,6 +13,7 @@ export const Tile = ({ businessDetails }: Props) => {
   const { image_url, name, rating, price, categories, location, id } =
     businessDetails;
   const [isFavorite, setIsFavorite] = useState(false);
+  const [imageUrl, setImageUrl] = useState(image_url);
   return (
     <Link
       to={generatePath(ROUTES.BUSINESS.href, {
@@ -34,7 +35,10 @@ export const Tile = ({ businessDetails }: Props) => {
           />
         </button>
         <img
-          src={image_url}
+          src={imageUrl}
+          onError={() => {
+            setImageUrl("/images/no-image.png");
+          }}
           alt={`${name} image`}
           className="w-full h-full object-center object-cover rounded-md"
         />
