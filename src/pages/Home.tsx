@@ -22,9 +22,9 @@ export const Home = () => {
   }, [data]);
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <CategoryFilter />
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:grid-cols-1 gap-4">
         <>
           {isLoading && "Loading"}
           {error && "error"}
@@ -34,6 +34,6 @@ export const Home = () => {
             ))}
         </>
       </div>
-    </>
+    </div>
   );
 };

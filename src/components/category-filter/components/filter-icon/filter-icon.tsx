@@ -30,10 +30,10 @@ export const FilterIcon = ({ categoryType }: Props) => {
   return (
     <button
       onClick={handleOnClick}
-      className="flex flex-col justify-center items-center hover:text-gray-500"
+      className="flex flex-col justify-center items-center hover:text-gray-700 text-gray-500 gap-2"
     >
-      <Icon icon={categoryToIconMap[categoryType]} className="w-10 h-10" />
-      <span className="text-sm">{t(categoryType)}</span>
+      <Icon icon={categoryToIconMap[categoryType]} className="w-6 h-6" />
+      <span className="text-xs">{t(categoryType)}</span>
     </button>
   );
 };
