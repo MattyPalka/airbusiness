@@ -7,6 +7,8 @@ import { Icon } from "../components/icon";
 import { useState } from "react";
 import { useBusinessReviews } from "../api-service/useBusinessReviews";
 import { Modal } from "../components/modal/modal";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 export const Business = () => {
   const { id } = useParams();
@@ -69,7 +71,38 @@ export const Business = () => {
                 </a>
               </div>
             </div>
-            <div>map</div>
+            {business && (
+              <div>
+                <MapContainer
+                  center={[
+                    business.coordinates.latitude,
+                    business.coordinates.longitude,
+                  ]}
+                  zoom={16}
+                  className="h-[400px]"
+                  scrollWheelZoom={false}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker
+                    position={[
+                      business.coordinates.latitude,
+                      business.coordinates.longitude,
+                    ]}
+                  >
+                    <Popup>
+                      <h6 className="font-semibold text-xl">
+                        {business?.name}
+                      </h6>
+                      {business?.location.address1} <br />
+                      {business?.location.city}
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              </div>
+            )}
           </div>
         )}
       </div>
