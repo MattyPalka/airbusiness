@@ -33,6 +33,8 @@ interface SearchParams {
   categories?: CategoryType | undefined;
 }
 
+export const DEFAULT_LIMIT = 20;
+
 export const useSearchBusinesses = (searchParams?: SearchParams) => {
   const {
     location = "Poland",
@@ -42,7 +44,7 @@ export const useSearchBusinesses = (searchParams?: SearchParams) => {
     price,
     open_now,
     sort_by = "best_match",
-    limit = 20,
+    limit = DEFAULT_LIMIT,
     offset,
     categories,
   } = searchParams || {};

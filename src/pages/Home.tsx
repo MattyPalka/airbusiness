@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  DEFAULT_LIMIT,
   isCategory,
   useSearchBusinesses,
 } from "../api-service/useSearchBusinesses";
@@ -7,19 +8,24 @@ import { Business } from "../api-service/mock-business";
 import { CategoryFilter } from "../components/category-filter";
 import { Tile } from "../components/tile";
 import { useSearchParams } from "react-router-dom";
+import { Pagination } from "../components/pagination/pagination";
 
 export const Home = () => {
   const [businesses, setBusinesses] = useState<Business[]>([]);
   const [searchParams] = useSearchParams();
+  const [page, setPage] = useState(0);
   const category = searchParams.get("category");
 
   const { isLoading, error, data } = useSearchBusinesses({
     categories: isCategory(category) ? category : undefined,
+    offset: page * DEFAULT_LIMIT,
   });
 
   useEffect(() => {
     data && setBusinesses(data.businesses);
   }, [data]);
+
+  const numOfPages = (data?.total || 0) / DEFAULT_LIMIT;
 
   return (
     <div className="flex flex-col gap-4">
@@ -34,6 +40,13 @@ export const Home = () => {
             ))}
         </>
       </div>
+      {data && (
+        <Pagination
+          onPageChanged={setPage}
+          numOfPages={numOfPages}
+          currentPage={page}
+        />
+      )}
     </div>
   );
 };
