@@ -1,3 +1,6 @@
 {
-    "call": "Call"
+    "call": "Call",
+    "review_header": "Reviews",
+    "reviews_one": "{{count}} review",
+    "reviews_other": "{{count}} reviews"
 }

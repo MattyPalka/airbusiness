@@ -29,6 +29,12 @@ export interface BusinessDetail {
   rapc: Rapc;
 }
 
+export interface ReviewPayload {
+  possible_languages: string[];
+  reviews: Review[];
+  total: number;
+}
+
 export interface Category {
   alias: string;
   title: string;
@@ -101,4 +107,20 @@ export interface Messaging {
 export interface Rapc {
   is_enabled: boolean;
   is_eligible: boolean;
+}
+
+export interface Review {
+  id: string;
+  url: string;
+  text: string;
+  rating: number;
+  time_created: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  profile_url: string;
+  image_url: string;
+  name: string;
 }

@@ -1,3 +1,9 @@
 {
-  "call": "Zadzwoń"
+  "call": "Zadzwoń",
+  "review_header": "Recenzje",
+  "reviews_zero": "{{count}} recenzji",
+  "reviews_one": "{{count}} recenzja",
+  "reviews_two": "{{count}}  recenzje",
+  "reviews_few": "{{count}} recenzje",
+  "reviews_many": "{{count}} recenzji"
 }

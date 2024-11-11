@@ -10,6 +10,7 @@ function lazy(importFn: Function) {
 export const icons = {
   Ambulance: lazy(async () => import("./assets/ambulance.svg")),
   Car: lazy(async () => import("./assets/car.svg")),
+  Cross: lazy(async () => import("./assets/cross.svg")),
   GraduationCap: lazy(async () => import("./assets/graduation-cap.svg")),
   Hamburger: lazy(async () => import("./assets/hamburger.svg")),
   Heart: lazy(async () => import("./assets/heart.svg")),
