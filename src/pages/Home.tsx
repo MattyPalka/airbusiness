@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   DEFAULT_LIMIT,
   isCategory,
+  SearchParams,
   useSearchBusinesses,
 } from "../api-service/useSearchBusinesses";
 import { Business } from "../api-service/mock-business";
@@ -15,10 +16,12 @@ export const Home = () => {
   const [searchParams] = useSearchParams();
   const [page, setPage] = useState(0);
   const category = searchParams.get("category");
+  const [locationValue, setLocationValue] = useState<string>();
 
   const { isLoading, error, data } = useSearchBusinesses({
     categories: isCategory(category) ? category : undefined,
     offset: page * DEFAULT_LIMIT,
+    location: locationValue,
   });
 
   useEffect(() => {
@@ -29,7 +32,11 @@ export const Home = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <CategoryFilter />
+      <CategoryFilter
+        applyFilters={({ location }) => {
+          location && setLocationValue(location);
+        }}
+      />
       <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:grid-cols-1 gap-4">
         <>
           {isLoading && "Loading"}

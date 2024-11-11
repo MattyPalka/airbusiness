@@ -2,5 +2,8 @@
     "call": "Call",
     "review_header": "Reviews",
     "reviews_one": "{{count}} review",
-    "reviews_other": "{{count}} reviews"
+    "reviews_other": "{{count}} reviews",
+    "filters": "Filters",
+    "filter_cta": "Filter",
+    "location": "Location"
 }

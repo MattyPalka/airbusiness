@@ -20,7 +20,7 @@ export const isCategory = (value: string | null): value is CategoryType =>
 
 export type CategoryType = (typeof categories)[number];
 
-interface SearchParams {
+export interface SearchParams {
   location?: string;
   latitude?: number;
   longitude?: number;

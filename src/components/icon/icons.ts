@@ -23,4 +23,5 @@ export const icons = {
   StarSolid: lazy(async () => import("./assets/star-solid.svg")),
   Wind: lazy(async () => import("./assets/wind.svg")),
   Undo: lazy(async () => import("./assets/undo-alt.svg")),
+  Filter: lazy(async () => import("./assets/filter.svg")),
 };

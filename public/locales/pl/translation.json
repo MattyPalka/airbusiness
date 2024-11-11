@@ -5,5 +5,8 @@
   "reviews_one": "{{count}} recenzja",
   "reviews_two": "{{count}}  recenzje",
   "reviews_few": "{{count}} recenzje",
-  "reviews_many": "{{count}} recenzji"
+  "reviews_many": "{{count}} recenzji",
+  "filters": "Filtry",
+  "filter_cta": "Filtruj",
+  "location": "Lokalizacja"
 }
