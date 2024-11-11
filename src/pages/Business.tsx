@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useBusinessDetails } from "../api-service/useBusinessDetails";
 import { InfoText } from "../components/info-text";
 import { PhotoGrid } from "../components/photo-grid/photo-grid";
@@ -14,6 +14,7 @@ export const Business = () => {
   const { id } = useParams();
   const { t } = useTranslation("translation");
   const [reviewsOpen, setReviewsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const { isLoading, error, isError, data: business } = useBusinessDetails(id);
   const { isLoading: isReviewLoading, data: reviews } = useBusinessReviews(id);
@@ -25,7 +26,15 @@ export const Business = () => {
           "Loading"
         ) : (
           <div className="flex flex-col gap-4 w-full">
-            <div>
+            <div className="flex gap-4 items-center">
+              <button
+                className="p-4 cursor-pointer hover:bg-gray-100 rounded transition"
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                <Icon icon="Undo" className="w-4 h-4" />
+              </button>
               <h6 className="font-semibold text-xl">{business?.name}</h6>
             </div>
             <PhotoGrid images={business?.photos || []} />
