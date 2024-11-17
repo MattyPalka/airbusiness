@@ -28,7 +28,7 @@ export const Home = () => {
     data && setBusinesses(data.businesses);
   }, [data]);
 
-  const numOfPages = (data?.total || 0) / DEFAULT_LIMIT;
+  const numOfPages = Math.floor((data?.total || 0) / DEFAULT_LIMIT);
 
   return (
     <div className="flex flex-col gap-4">

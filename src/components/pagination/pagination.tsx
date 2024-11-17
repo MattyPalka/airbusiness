@@ -17,6 +17,11 @@ export const Pagination = ({
   const [inputPageValue, setInputPageValue] = useState<number>(currentPage + 1);
   const ref = useRef(null);
   useOnClickOutside(ref, () => setInputPageNumberOpen(false));
+  if (!numOfPages) {
+    return null;
+  }
+
+  console.log(numOfPages);
   return (
     <nav className="mx-auto">
       <ul className="flex items-center -space-x-px h-8 text-sm">
